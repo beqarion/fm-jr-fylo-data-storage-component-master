@@ -1,0 +1,235 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+/*
+===============
+Variables
+===============
+*/
+
+:root {
+  /*colors */
+  --pale-blue: hsl(243, 100%, 93%);
+  --grayish-blue: hsl(229, 7%, 55%);
+  --dark-blue: hsl(228, 56%, 26%);
+  --very-dark-blue: hsl(229, 57%, 11%);
+
+  --gradient: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+  --clr-white: #fff;
+  --clr-black: #222;
+  --FF: "Raleway", sans-serif;
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--FF);
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: inline-block;
+}
+/*  global classes */
+
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: url(./images/bg-mobile.png) no-repeat center / cover;
+  padding: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  .data-component {
+    width: 100%;
+    max-width: var(--fixed-width);
+    margin: 0 auto;
+  }
+  .triangle {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  main {
+    background: var(--very-dark-blue) url(./images/bg-desktop.png) no-repeat
+      bottom left / 100% 50%;
+  }
+}
+
+/*
+=============== 
+Card component
+===============
+*/
+.data-component {
+  display: grid;
+  gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .data-component {
+    grid-template-columns: minmax(auto, 350px) minmax(50%, 540px);
+    align-items: end;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+}
+/* header */
+.component-header {
+  background: var(--dark-blue);
+  padding: 2.5rem;
+  border-radius: 10px 100px 10px 10px;
+  display: grid;
+  gap: 2rem;
+}
+.icons-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--very-dark-blue);
+}
+/* body */
+.body-container {
+  position: relative;
+}
+.component-body {
+  background: var(--dark-blue);
+  padding: 2rem 2rem 3.25rem;
+  border-radius: 10px;
+  color: var(--pale-blue);
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .component-body {
+    padding: 2.5rem;
+  }
+}
+
+/* progress bar */
+.progress-bar {
+  position: relative;
+  background: var(--very-dark-blue);
+  height: 20px;
+  border-radius: 10px;
+}
+.progress-value {
+  background: var(--gradient);
+  width: 75%;
+  height: 14px;
+  border-radius: 8px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  bottom: 3px;
+}
+.progress-knob {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background: var(--clr-white);
+  bottom: 2px;
+}
+/* bar texts */
+.bar-label {
+  margin-bottom: 1rem;
+}
+.progress-bar {
+  margin-bottom: 10px;
+}
+.progress-scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progress-scale span {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+}
+.triangle {
+  width: 22.6px;
+  height: 22.6px;
+  background-color: var(--clr-white);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+}
+
+/* balance positioned */
+.balance-notice {
+  color: var(--very-dark-blue);
+  background: var(--clr-white);
+  box-shadow: 0px 75px 100px -30px rgba(0, 0, 0, 0.24776);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (min-width: 768px) {
+  .balance-notice {
+    border-bottom-right-radius: 0;
+    position: absolute;
+    left: auto;
+    top: -3rem;
+    right: 2.5rem;
+    transform: none;
+  }
+}
+.balance-notice span:first-child {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+}
+.balance-notice span:nth-child(2) {
+  text-transform: uppercase;
+  color: var(--grayish-blue);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1px;
+}
